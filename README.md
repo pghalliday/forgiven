@@ -11,7 +11,7 @@ Extensible given/when/then and more for test frameworks.
 install `forgiven` and a UI factory (`forgiven-mocha` in this case) as a development dependency.
 
 ```shell
-npm install --save-dev forgiven forgiven-mocha
+npm install --save-dev mocha forgiven forgiven-mocha
 ```
 
 Then initialize a new `given` function, with the UI factory
