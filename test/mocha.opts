@@ -1,3 +1,3 @@
 test/src
 --recursive
---require test/helpers/setup
+--require test/setup

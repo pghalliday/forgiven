@@ -1,5 +1,5 @@
 {
-  "name": "givenify",
+  "name": "forgiven",
   "version": "0.0.0",
   "description": "Given/when/then and more for Mocha",
   "main": "lib/index.js",
@@ -7,30 +7,32 @@
     "cmd:lint": "eslint .",
     "cmd:test": "cross-env NODE_ENV=test nyc mocha",
     "cmd:coverage": "nyc report -r text && nyc check-coverage",
+    "cmd:integration": "mocha --opts integration/mocha.opts",
     "cmd:build": "babel src --out-dir lib",
     "cmd:coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "run-s cmd:lint cmd:test cmd:coverage",
-    "build": "run-s test cmd:build",
+    "build": "run-s test cmd:build cmd:integration",
     "ci": "run-s build cmd:coveralls",
-    "alarmist:lint": "chokidar \"+(src|test)/**/*\" -c \"alarmist-npm cmd:lint\"",
+    "alarmist:lint": "chokidar \"+(src|test|integration)/**/*\" -c \"alarmist-npm cmd:lint\"",
     "alarmist:test": "chokidar \"+(src|test)/**/*\" -c \"alarmist-npm cmd:test\"",
     "alarmist:coverage": "chokidar \"coverage/lcov.info\" -c \"alarmist-npm cmd:coverage\"",
+    "alarmist:integration": "chokidar \"+(lib|integration)/**/*\" -c \"alarmist-npm cmd:integration\"",
     "alarmist:build": "chokidar \"src/**/*\" -c \"alarmist-npm cmd:build\"",
-    "start": "alarmist-monitor run-p alarmist:lint alarmist:test alarmist:coverage alarmist:build",
-    "watch": "chokidar '+(src|test)/**/*' -c 'npm run -s build'",
+    "start": "alarmist-monitor run-p alarmist:lint alarmist:test alarmist:coverage alarmist:integration alarmist:build",
+    "watch": "chokidar '+(src|test|integration)/**/*' -c 'npm run -s build'",
     "prepublish": "run-s cmd:build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pghalliday/givenify.git"
+    "url": "git+https://github.com/pghalliday/forgiven.git"
   },
   "keywords": [],
   "author": "Peter Halliday <pghalliday@gmail.com> (http://pghalliday.com)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pghalliday/givenify/issues"
+    "url": "https://github.com/pghalliday/forgiven/issues"
   },
-  "homepage": "https://github.com/pghalliday/givenify#readme",
+  "homepage": "https://github.com/pghalliday/forgiven#readme",
   "devDependencies": {
     "alarmist": "^1.0.17",
     "alarmist-npm": "^1.0.4",
@@ -44,6 +46,8 @@
     "cross-env": "^3.1.4",
     "eslint": "^3.14.1",
     "eslint-config-google": "^0.7.1",
+    "forgiven-mocha": "^0.0.1",
+    "lodash": "^4.17.4",
     "mocha": "^3.2.0",
     "npm-run-all": "^4.0.1",
     "nyc": "^10.1.2",

@@ -2,7 +2,15 @@
   "presets": ["env"],
   "env": {
     "test": {
-      "plugins": ["istanbul"]
+      "plugins": [[
+        "istanbul", {
+          "exclude": [
+            "test",
+            "src/ui-factories",
+            "src/plugins"
+          ],
+        }
+      ]]
     }
   }
 }
