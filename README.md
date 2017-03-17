@@ -247,7 +247,7 @@ function myPlugin(setup) {
 
 ### UI Factories
 
-UI factories can be created support various test frameworks depending on their features. Currently the following UI factories exist.
+UI factories can be created to support various test frameworks depending on their features. Currently the following UI factories exist.
 
 ```shell
 # mocha support
