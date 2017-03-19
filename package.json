@@ -22,7 +22,7 @@
     "alarmist:browser": "chokidar \"src/**/*\" \"index.js\" -c \"alarmist-npm cmd:browser\"",
     "start": "alarmist-monitor run-p alarmist:lint alarmist:test alarmist:coverage alarmist:integration alarmist:build alarmist:browser",
     "watch": "chokidar '+(src|test|integration)/**/*' -c 'npm run -s build'",
-    "prepublish": "run-s cmd:build"
+    "prepublish": "run-s cmd:build cmd:browser"
   },
   "repository": {
     "type": "git",
