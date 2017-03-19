@@ -1,6 +1,6 @@
 {
   "name": "forgiven",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Given/when/then and more for Mocha",
   "main": "lib/index.js",
   "scripts": {
