@@ -18,6 +18,10 @@ export {
   PENDING_MODIFIERS,
 };
 
+export {
+  descriptionFromFuncStr,
+} from './utils/description-from-func-str.js';
+
 const CHAINED_PREFIX = '__prefix';
 const CHAINED_UI = '__ui';
 const CHAINED_SETUPS = '__setups';
