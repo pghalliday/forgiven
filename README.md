@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/g7uqlq09d9fwv0wy/branch/master?svg=true)](https://ci.appveyor.com/project/pghalliday/forgiven/branch/master)
 [![Coverage Status](https://coveralls.io/repos/github/pghalliday/forgiven/badge.svg?branch=master)](https://coveralls.io/github/pghalliday/forgiven?branch=master)
 
-Extensible given/when/then and more for test frameworks.
+Extensible given/when/then and more for test frameworks
 
 ## Usage
 

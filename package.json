@@ -1,7 +1,7 @@
 {
   "name": "forgiven",
   "version": "0.0.2",
-  "description": "Given/when/then and more for Mocha",
+  "description": "Extensible given/when/then and more for test frameworks",
   "main": "lib/index.js",
   "scripts": {
     "cmd:lint": "eslint .",
@@ -43,6 +43,7 @@
     "babel-loader": "^6.4.1",
     "babel-plugin-istanbul": "^3.1.2",
     "babel-preset-env": "^1.1.8",
+    "bower": "^1.8.0",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "chokidar-cli": "^1.2.0",
