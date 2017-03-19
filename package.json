@@ -1,6 +1,6 @@
 {
   "name": "forgiven",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Extensible given/when/then and more for test frameworks",
   "main": "lib/index.js",
   "scripts": {
