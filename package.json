@@ -8,17 +8,19 @@
     "cmd:test": "cross-env NODE_ENV=test nyc mocha",
     "cmd:coverage": "nyc report -r text && nyc check-coverage",
     "cmd:integration": "mocha --opts integration/mocha.opts",
-    "cmd:build": "babel src --out-dir lib",
+    "cmd:build": "rimraf lib && babel src --out-dir lib",
+    "cmd:browser": "webpack",
     "cmd:coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "run-s cmd:lint cmd:test cmd:coverage",
-    "build": "run-s test cmd:build cmd:integration",
+    "build": "run-s test cmd:build cmd:integration cmd:browser",
     "ci": "run-s build cmd:coveralls",
     "alarmist:lint": "chokidar \"+(src|test|integration)/**/*\" -c \"alarmist-npm cmd:lint\"",
     "alarmist:test": "chokidar \"+(src|test)/**/*\" -c \"alarmist-npm cmd:test\"",
     "alarmist:coverage": "chokidar \"coverage/lcov.info\" -c \"alarmist-npm cmd:coverage\"",
     "alarmist:integration": "chokidar \"+(lib|integration)/**/*\" -c \"alarmist-npm cmd:integration\"",
     "alarmist:build": "chokidar \"src/**/*\" -c \"alarmist-npm cmd:build\"",
-    "start": "alarmist-monitor run-p alarmist:lint alarmist:test alarmist:coverage alarmist:integration alarmist:build",
+    "alarmist:browser": "chokidar \"src/**/*\" \"index.js\" -c \"alarmist-npm cmd:browser\"",
+    "start": "alarmist-monitor run-p alarmist:lint alarmist:test alarmist:coverage alarmist:integration alarmist:build alarmist:browser",
     "watch": "chokidar '+(src|test|integration)/**/*' -c 'npm run -s build'",
     "prepublish": "run-s cmd:build"
   },
@@ -37,6 +39,8 @@
     "alarmist": "^1.0.17",
     "alarmist-npm": "^1.0.4",
     "babel-cli": "^6.22.2",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
     "babel-plugin-istanbul": "^3.1.2",
     "babel-preset-env": "^1.1.8",
     "chai": "^3.5.0",
@@ -51,7 +55,9 @@
     "mocha": "^3.2.0",
     "npm-run-all": "^4.0.1",
     "nyc": "^10.1.2",
+    "rimraf": "^2.6.1",
     "sinon": "^2.0.0",
-    "sinon-chai": "^2.8.0"
+    "sinon-chai": "^2.8.0",
+    "webpack": "^2.2.1"
   }
 }
