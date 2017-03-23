@@ -16,6 +16,7 @@ export const TEST_CONJUNCTIONS = [
 export const DETERMINERS = [
   'the',
   'a',
+  'an',
 ];
 
 export const PENDING_MODIFIERS = [

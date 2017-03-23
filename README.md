@@ -89,9 +89,9 @@ given(() => greeting = 'hello')
 .end();
 ```
 
-Another bonus to using `fork` is that if you attenpt to `end` a chain inside a `fork` then an error will be thrown.
+Another bonus to using `fork` is that if you attempt to `end` a chain inside a `fork` then an error will be thrown.
 
-So far shown is the most concise form of setup and test definition, however the full function signatures for setup steps are
+So we have only seen the most concise form of setup and test definition, however the full function signatures for setup steps are
 
 ```javascript
 setup(description, beforeEach, afterEach);
@@ -112,7 +112,7 @@ test({description, test});
 
 When no `description` is given then the body of the `test` callback will be used as the description.
 
-You will have noticed that various grammatical constructions can be made. There are in fact a fixed list of words that can be used for setup steps and another list for test steps. The choice of wording only affects the generated test reports as they are appended to the descriptions. The words can also be chained indefinitely (even if it doesn't make sense) and they will all be prefixed to test and setup descriptions. The only limitation is that the setup chain must begin with `given` and the test phase must begin with `then`.
+You will have noticed that various grammatical constructions can be made. There are in fact a fixed list of words that can be used for setup steps and another list for test steps. The choice of wording only affects the generated test reports as they are prepended to the descriptions. The words can also be chained indefinitely (even if it doesn't make sense) and they will all be prefixed to test and setup descriptions. The only limitation is that the setup chain must begin with `given` and the test phase must begin with `then`.
 
 The valid words for setup steps are
 
@@ -205,10 +205,7 @@ global.given = create(mocha, {
 
 The following plugins are currently available
 
-```shell
-# extensions for webcomponent test-fixtures
-npm install --save-dev forgiven-webcomponents
-```
+- [forgiven-webcomponents](https://github.com/pghalliday/forgiven-webcomponents) - extensions for webcomponent test-fixtures
 
 Each plugin is registered with a name that can be used with setup steps using a determiner.
 
@@ -216,6 +213,7 @@ Each plugin is registered with a name that can be used with setup steps using a 
 export const DETERMINERS = [
   'the',
   'a',
+  'an',
 ];
 ```
 
@@ -249,13 +247,8 @@ function myPlugin(setup) {
 
 UI factories can be created to support various test frameworks depending on their features. Currently the following UI factories exist.
 
-```shell
-# mocha support
-npm install --save-dev forgiven-mocha
-
-# jasmine support
-npm install --save-dev forgiven-jasmine
-```
+- [forgiven-mocha](https://github.com/pghalliday/forgiven-mocha) - Mocha support
+- [forgiven-jasmine](https://github.com/pghalliday/forgiven-jasmine) - Jasmine support
 
 A UI factory is defined as a function that returns a function that calls the initial setup and handles `setup` and `test` callbacks. Any of the above factories provide an example but as a skeleton, the following should provide guidance.
 
@@ -291,9 +284,9 @@ function setup({
   });
 }
 
-function test({description, test, pending, only}) {
+function test({description, pending, only, test}) {
   // add a test with modifiers if supported
-  doTest(test, pending, only);
+  doTest(description, pending, only, test);
 }
 
 export function uiFactory(params, callback) {
