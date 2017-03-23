@@ -222,10 +222,10 @@ For example
 ```javascript
 const context = {};
 
-given.a.fixture.as(context, 'element1').with('my test-fixture id')
-.and.a.fixture.as(context, 'element2').with('another test-fixture id')
-.then(() => context.element1.$.field.should.eql('something')
-.and(() => context.element2.$.field.should.eql('something else')
+given.a.fixture.as('element1').with('my test-fixture id')
+.and.a.fixture.as('element2').with('another test-fixture id')
+.then(function() {this.element1.$.field.should.eql('something')})
+.and(function() {this.element2.$.field.should.eql('something else')})
 .end();
 ```
 

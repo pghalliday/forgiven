@@ -1,3 +1,0 @@
-integration/test
---recursive
---require integration/setup

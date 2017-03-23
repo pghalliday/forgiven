@@ -3,6 +3,9 @@ import {
   resolveTestParams,
 } from './utils/args';
 import {
+  assign,
+} from './utils/assign';
+import {
   SETUP_CONJUNCTIONS,
   TEST_CONJUNCTIONS,
   DETERMINERS,
@@ -31,7 +34,7 @@ const CHAINED_PENDING = '__pending';
 const CHAINED_ONLY = '__only';
 
 function copyChain(chain, ...changes) {
-  return Object.assign({}, {
+  return assign({}, {
     [CHAINED_PREFIX]: chain[CHAINED_PREFIX],
     [CHAINED_UI]: chain[CHAINED_UI],
     [CHAINED_SETUPS]: chain[CHAINED_SETUPS],
@@ -50,7 +53,7 @@ function bindMethod(name, method, chain, changes) {
   // also add the chained properties to
   // the method so that it can be used as
   // an object for chaining grammar
-  Object.assign(newMethod, newChain);
+  assign(newMethod, newChain);
   return newMethod;
 };
 
@@ -62,7 +65,7 @@ function bindProperty(name, chain) {
 };
 
 function createParams(prefix, pending, only, params) {
-  return Object.assign({}, params, {
+  return assign({}, params, {
     description: prefix + params.description,
     pending,
     only,

@@ -1,0 +1,3 @@
+integration/node/test.js
+--recursive
+--require integration/node/setup

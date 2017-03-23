@@ -1,4 +1,4 @@
-const create = require('../lib').create;
+const create = require('../../lib').create;
 const mocha = require('forgiven-mocha').mocha;
 const chai = require('chai');
 chai.should();
