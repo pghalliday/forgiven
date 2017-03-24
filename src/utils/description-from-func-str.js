@@ -2,6 +2,7 @@ import {
   FUNC_REGEX,
   LONG_ARROW_REGEX,
   SHORT_ARROW_REGEX,
+  RETURN_REGEX,
 } from '../constants';
 
 export function descriptionFromFuncStr(funcStr) {
@@ -13,6 +14,11 @@ export function descriptionFromFuncStr(funcStr) {
     match = SHORT_ARROW_REGEX.exec(funcStr);
   }
   if (match !== null) {
-    return '`' + match[2].trim() + '`';
+    let description = match[2].trim();
+    match = RETURN_REGEX.exec(description);
+    if (match !== null) {
+      description = match[1].trim();
+    }
+    return '`' + description + '`';
   }
 }

@@ -41,3 +41,5 @@ export const SHORT_ARROW_REGEX =
   new RegExp('^\\(([^)]*)\\)\\s*=>\\s*([^]*)$');
 export const ASYNC_ARGS_REGEX =
   new RegExp('^[^]*,[^{}[\\]]*$');
+export const RETURN_REGEX =
+  new RegExp('^return\\s+(.*?);?$');

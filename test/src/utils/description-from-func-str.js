@@ -3,15 +3,15 @@ import {
 } from '../../../src/utils/description-from-func-str';
 
 const regularFunction = `function regularFunction(message) {
-  console.log(message);
+  return console.log(message)
 }`;
 
 const anonymousFunction = `function(message) {
-  console.log(message);
+  return console.log(message);
 }`;
 
 const longArrow = `(message) => {
-  console.log(message);
+  return console.log(message);
 }`;
 
 const shortArrow = `(message) => console.log(message)`;
@@ -22,19 +22,19 @@ describe('utils', () => {
   describe('descriptionFromFuncStr', () => {
     it('should handle regular functions', () => {
       descriptionFromFuncStr(regularFunction).should.eql(
-        '`console.log(message);`'
+        '`console.log(message)`'
       );
     });
 
     it('should handle anonymous functions', () => {
       descriptionFromFuncStr(anonymousFunction).should.eql(
-        '`console.log(message);`'
+        '`console.log(message)`'
       );
     });
 
     it('should handle long form arrow functions', () => {
       descriptionFromFuncStr(longArrow).should.eql(
-        '`console.log(message);`'
+        '`console.log(message)`'
       );
     });
 
