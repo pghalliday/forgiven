@@ -6,6 +6,8 @@ export const SETUP_CONJUNCTIONS = [
   'with',
   'and',
   'or',
+  'after',
+  'once',
 ];
 
 export const TEST_CONJUNCTIONS = [

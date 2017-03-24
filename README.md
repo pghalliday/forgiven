@@ -124,6 +124,8 @@ export const SETUP_CONJUNCTIONS = [
   'with',
   'and',
   'or',
+  'after',
+  'once',
 ];
 ```
 
