@@ -193,11 +193,11 @@ import {
   create,
 } from 'forgiven';
 import {
-  promise,
-} from 'forgiven-promise';
-import {
   mocha,
 } from 'forgiven-mocha';
+import {
+  promise,
+} from 'forgiven-promise';
 
 global.given = create(mocha, {
   promise: promise,
