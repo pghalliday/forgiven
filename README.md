@@ -193,19 +193,20 @@ import {
   create,
 } from 'forgiven';
 import {
-  webcomponents,
-} from 'forgiven-webcomponents';
+  promise,
+} from 'forgiven-promise';
 import {
   mocha
 } from 'forgiven-mocha';
 
 global.given = create(mocha, {
-  fixture: webcomponents,
+  promise: promise,
 });
 ```
 
 The following plugins are currently available
 
+- [forgiven-promise](https://github.com/pghalliday/forgiven-promise) - record promises returned from setup steps
 - [forgiven-webcomponents](https://github.com/pghalliday/forgiven-webcomponents) - extensions for webcomponent test-fixtures
 
 Each plugin is registered with a name that can be used with setup steps using a determiner.
@@ -223,10 +224,8 @@ For example
 ```javascript
 const context = {};
 
-given.a.fixture.as('element1').with('my test-fixture id')
-.and.a.fixture.as('element2').with('another test-fixture id')
-.then(function() {this.element1.$.field.should.eql('something')})
-.and(function() {this.element2.$.field.should.eql('something else')})
+given.a.promise.as(context, 'promise').from(() => Promise.reject(new Error('FAIL')))
+.then(() => context.promise.should.be.rejectedWith('FAIL'))
 .end();
 ```
 
